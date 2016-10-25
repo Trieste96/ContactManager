@@ -1,12 +1,7 @@
 ﻿using ConctactManager.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ConctactManager
@@ -23,6 +18,10 @@ namespace ConctactManager
         {
             gridContacts.DataSource = _entities.Contacts.ToList();
         }
+        private void editView()
+        {
+            
+        }
         public fContactManager()
         {
             InitializeComponent();
@@ -30,27 +29,42 @@ namespace ConctactManager
             indexView();
         }
 
-        private void Edit_view()
+        private void Edit_view(Contact contactToEdit)
         {
-
+            tabPage1.Text = "Edit";
+            txtFname.Text = contactToEdit.FirstName;
+            txtLname.Text = contactToEdit.LastName;
+            txtPhone.Text = contactToEdit.Phone;
+            txtEmail.Text = contactToEdit.Email;
+            btnSave.Tag = contactToEdit.Id;
         }
-        private void gridContacts_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        private void Edit_click()
         {
-            try
+            int id = (int)gridContacts.CurrentRow.Cells[0].Value;
+            var contactToEdit = ( 
+                from c in _entities.Contacts
+                where c.Id == id
+                select c
+                ).FirstOrDefault();
+            Edit_view(contactToEdit);
+        }
+
+        private void gridContacts_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            if (me.Button == MouseButtons.Right)
             {
                 ContextMenuStrip menu = new ContextMenuStrip();
-                menu.Items.Add("Edit", null);
+                menu.Items.Add("Edit", null, new EventHandler(Edit_click));
                 menu.Items.Add("Delete", null);
 
                 DataGridView grid = sender as DataGridView;
                 grid.CurrentCell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 Point pt = grid.PointToClient(Control.MousePosition);
-                System.Console.WriteLine("Mouse's location: "+Control.MousePosition.X + ", " + Control.MousePosition.Y);
-                System.Console.WriteLine("Point's grid location: "+pt.X + ", " + pt.Y);
+                //System.Console.WriteLine("Mouse's location: " + Control.MousePosition.X + ", " + Control.MousePosition.Y);
+                //System.Console.WriteLine("Point's grid location: " + pt.X + ", " + pt.Y);
                 menu.Show(grid, pt);
             }
-            catch (ArgumentOutOfRangeException)
-            {   }
         }
     }
 }
