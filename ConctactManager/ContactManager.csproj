@@ -80,21 +80,25 @@
     </Compile>
     <Compile Include="Models\Contact.cs">
       <DependentUpon>ContactManagerModel.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\ContactManagerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactManagerModel.Context.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\ContactManagerModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactManagerModel.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Models\ContactManagerModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactManagerModel.edmx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,9 +117,11 @@
     <EntityDeploy Include="Models\ContactManagerModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ContactManagerModel.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EntityDeploy>
     <None Include="Models\ContactManagerModel.edmx.diagram">
       <DependentUpon>ContactManagerModel.edmx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -133,21 +139,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_data\ContactManagerDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_data\ContactManagerDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>ContactManagerDB.mdf</DependentUpon>
     </Content>
     <Content Include="Models\ContactManagerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ContactManagerModel.edmx</DependentUpon>
       <LastGenOutput>ContactManagerModel.Context.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Models\ContactManagerModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ContactManagerModel.edmx</DependentUpon>
       <LastGenOutput>ContactManagerModel.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
